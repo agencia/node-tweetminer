@@ -1,5 +1,9 @@
 var twitterAPI = require('node-twitter-api');
 var format = require('util').format;
+var request = require("request");
+var async = require('async');
+var urlExpander = require('expand-url');
+
 var twitter = new twitterAPI({
     consumerKey: 'Alnn9DVS5HwuGlNrKwUAtw',
     consumerSecret: 'xcZsBZDwtubjDDIsfXYYB8Y1p2nJY9gk920a4C8wDws',
@@ -11,6 +15,22 @@ var accessTokenSecret="7giyVk47AAWbz5vue8ep1iC4uWEBeAqonsf8zXGwDU55x";
 var monk = require('monk');
 var db = monk('localhost:27017/todos_tweets');
 var pool = db.get("url");
+var expanded = db.get("expanded");
+
+var counter=0;
+var q = async.queue(function (shortUrl, callback) {
+    urlExpander.expand(shortUrl, function(err, longUrl){
+        counter++;
+        //console.log(counter+": "+longUrl);
+        expanded.insert({"longurl" : longUrl});
+        callback();
+    });
+}, 50);
+
+q.drain = function() {
+    console.log(counter);
+    console.log('all urls have been processed');
+}
 
 
 var search_parameters = {"q":"4sq com", "count":"100"};
@@ -26,7 +46,7 @@ var timer = setInterval(function(){
 				var urls = data.statuses[index]["entities"]["urls"];
 				//console.log(urls[urls.length - 1]["expanded_url"]);
 				pool.insert({"url":urls[urls.length - 1]["expanded_url"]});
-				
+				q.push(urls[urls.length - 1]["expanded_url"], function (errr) {console.log(errr);});
 				search_parameters["max_id"] = (search_parameters["max_id"] > data.statuses[index]["id"] || !search_parameters["max_id"]) ? data.statuses[index]["id"] : search_parameters["max_id"];
 				i++;
 			}
@@ -39,6 +59,6 @@ var timer = setInterval(function(){
 		}
 	});
 }
-, 3000);
+, 4000);
 
 	db.close();
