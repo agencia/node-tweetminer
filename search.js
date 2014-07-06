@@ -57,7 +57,7 @@ var timer = setInterval(function(){
 				var urls = data.statuses[index]["entities"]["urls"];
 				//console.log(urls[urls.length - 1]["expanded_url"]);
 				//pool.insert({"url":urls[urls.length - 1]["expanded_url"]});
-				q.push(urls[urls.length - 1]["expanded_url"], function (errr) {console.log("Error on pooling: "+errr);});
+				q.push(urls[urls.length - 1]["expanded_url"], function (errr) {console.log("Error on pooling: "+errr + " " urls[urls.length - 1]["expanded_url"]);});
 				search_parameters["max_id"] = (search_parameters["max_id"] > data.statuses[index]["id"] || !search_parameters["max_id"]) ? data.statuses[index]["id"] : search_parameters["max_id"];
 				i++;
 			}
