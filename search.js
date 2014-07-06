@@ -1,5 +1,4 @@
 var twitterAPI = require('node-twitter-api');
-var MongoClient = require('mongodb').MongoClient;
 var format = require('util').format;
 var twitter = new twitterAPI({
     consumerKey: 'Alnn9DVS5HwuGlNrKwUAtw',
@@ -42,4 +41,3 @@ var timer = setInterval(function(){
 , 10000);
 
 	db.close();
-	monk.close();
