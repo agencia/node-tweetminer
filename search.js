@@ -18,17 +18,18 @@ var pool = db.get("url");
 var expanded = db.get("expanded");
 
 var counter=0;
+var fsq_params, fsq_keys,fsq_checkinid, fsq_signature, lastvars, almost_signature;
 var q = async.queue(function (shortUrl, callback) {
     urlExpander.expand(shortUrl, function(err, longUrl){
         counter++;
         //console.log(counter+": "+longUrl);
-        var fsq_params	= longUrl.split("/");
-        var fsq_keys	= fsq_params[fsq_params.length-1].split('?');
-        var fsq_checkinid = fsq_keys[0];
-        var fsq_signature = null;
+         fsq_params	= longUrl.split("/");
+         fsq_keys	= fsq_params[fsq_params.length-1].split('?');
+         fsq_checkinid = fsq_keys[0];
+         fsq_signature = null;
         if(fsq_keys.length > 1){
-        	var lastvars = fsq_keys[1].split('&');
-        	var almost_signature = lastvars[0].split('=');
+        	 lastvars = fsq_keys[1].split('&');
+        	 almost_signature = lastvars[0].split('=');
         	if(almost_signature[1].length > 3){
             	fsq_signature = almost_signature[1];
             }
@@ -55,15 +56,12 @@ var timer = setInterval(function(){
 			var i = 0;
 			for (var index in data.statuses){
 				var urls = data.statuses[index]["entities"]["urls"];
-				//console.log(urls[urls.length - 1]["expanded_url"]);
 				//pool.insert({"url":urls[urls.length - 1]["expanded_url"]});
-				console.log(urls[urls.length - 1]["expanded_url"]);
+				//console.log(urls[urls.length - 1]["expanded_url"]);
 				q.push(urls[urls.length - 1]["expanded_url"], function (err) {console.log("Error on pooling: " + err);});
 				search_parameters["max_id"] = (search_parameters["max_id"] > data.statuses[index]["id"] || !search_parameters["max_id"]) ? data.statuses[index]["id"] : search_parameters["max_id"];
 				i++;
 			}
-			//search_parameters["max_id"] = data.search_metadata.max_id;
-			//console.log("max_id: " + search_parameters["max_id"]);
 			if(i < 1){
 				clearInterval(timer);
 				console.log("Finish!!!!");
