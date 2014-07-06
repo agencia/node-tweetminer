@@ -12,7 +12,7 @@ twitter.search({"q":"4sq com", "count":"5"},accessTokenKey,accessTokenSecret, fu
 	if (error){
 		console.log(error);
 	} else {
-		//console.log(data); g
+		console.log(data);
 		for (var index in data.statuses){
 			var urls = data.statuses[index]["entities"]["urls"];
 			console.log(urls[urls.length - 1]["expanded_url"]);
