@@ -13,8 +13,8 @@ twitter.search({"q":"4sq com", "count":"5"},accessTokenKey,accessTokenSecret, fu
 		console.log(error);
 	} else {
 		console.log(data);
-		data.statuses.forEach (tweet ){
-			console.log(tweet);
+		for (var index in ){
+			console.log(data.statuses[index]);
 		}
 	}
 });
