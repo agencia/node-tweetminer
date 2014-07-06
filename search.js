@@ -18,6 +18,7 @@ var timer = setInterval(function(){
 	twitter.search(search_parameters,accessTokenKey,accessTokenSecret, function(error, data, response){
 		if (error){
 			console.log(error);
+				clearInterval(timer);
 		} else {
 			//console.log(data);
 			var i = 0;
@@ -31,7 +32,7 @@ var timer = setInterval(function(){
 			}
 			//search_parameters["max_id"] = data.search_metadata.max_id;
 			//console.log("max_id: " + search_parameters["max_id"]);
-			if(i < 100){
+			if(i < 1){
 				clearInterval(timer);
 				console.log("Finish!!!!");
 			}
