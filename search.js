@@ -15,7 +15,7 @@ twitter.search({"q":"4sq com", "count":"5"},accessTokenKey,accessTokenSecret, fu
 		//console.log(data);
 		
 		for (var tweet in data){
-			console.log(tweet);
+			console.log(tweet["statuses"]);
 		}
 	}
 });
