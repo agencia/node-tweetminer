@@ -40,4 +40,5 @@ var timer = setInterval(function(){
 	});
 , 10000);
 
-	db.close()
+	db.close();
+	monk.close();
