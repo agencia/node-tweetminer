@@ -15,7 +15,7 @@ var pool = db.get("url");
 
 
 var max_id = null;
-	twitter.search({"q":"4sq com", "count":"5", "max_id":max_id},accessTokenKey,accessTokenSecret, function(error, data, response){
+	twitter.search({"q":"4sq com", "count":"5"},accessTokenKey,accessTokenSecret, function(error, data, response){
 		if (error){
 			console.log(error);
 		} else {
