@@ -26,7 +26,7 @@ var search_parameters = {"q":"4sq com", "count":"5"};
 				console.log(urls[urls.length - 1]["expanded_url"]);
 				pool.insert({"url":urls[urls.length - 1]["expanded_url"]});
 				
-				search_parameters["max_id"] = search_parameters["max_id"] > data.statuses[index].id ? data.statuses[index].id : search_parameters["max_id"];
+				search_parameters["max_id"] = (search_parameters["max_id"] > data.statuses[index]["id"] || !search_parameters["max_id"]) ? data.statuses[index]["id"] : search_parameters["max_id"];
 			}
 			//search_parameters["max_id"] = data.search_metadata.max_id;
 			console.log("max_id: " + search_parameters["max_id"]);
