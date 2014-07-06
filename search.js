@@ -70,6 +70,6 @@ var timer = setInterval(function(){
 		}
 	});
 }
-, 4000);
+, 5000); //5 seconds
 
 	db.close();
