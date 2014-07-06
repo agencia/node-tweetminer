@@ -8,7 +8,7 @@ var twitter = new twitterAPI({
 var accessTokenKey = "182570549-oQ0DDxVQ0oNhKK4cvFYVSJ4FWcOXQf0oAIznt3CB";
 var accessTokenSecret="7giyVk47AAWbz5vue8ep1iC4uWEBeAqonsf8zXGwDU55x";
 
-twitter.search({"ulises"},accessTokenKey,accessTokenSecret, function(error, data, response){
+twitter.search({"q":"ulises"},accessTokenKey,accessTokenSecret, function(error, data, response){
 	if (error){
 		console.log(error);
 	} else {
