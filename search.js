@@ -23,7 +23,7 @@ var timer = setInterval(function(){
 			var i = 0;
 			for (var index in data.statuses){
 				var urls = data.statuses[index]["entities"]["urls"];
-				console.log(urls[urls.length - 1]["expanded_url"]);
+				//console.log(urls[urls.length - 1]["expanded_url"]);
 				pool.insert({"url":urls[urls.length - 1]["expanded_url"]});
 				
 				search_parameters["max_id"] = (search_parameters["max_id"] > data.statuses[index]["id"] || !search_parameters["max_id"]) ? data.statuses[index]["id"] : search_parameters["max_id"];
