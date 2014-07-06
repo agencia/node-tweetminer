@@ -38,6 +38,7 @@ var timer = setInterval(function(){
 			}
 		}
 	});
+}
 , 10000);
 
 	db.close();
