@@ -24,7 +24,7 @@ var max_id = null;
 				var urls = data.statuses[index]["entities"]["urls"];
 				console.log(urls[urls.length - 1]["expanded_url"]);
 				pool.insert({"url":urls[urls.length - 1]["expanded_url"]});
-				max_id = data.statuses[index]["_id"];
+				max_id = data.statuses[index]["id"];
 			}
 			//max_id = data.search_metadata.max_id;
 			console.log("max_id: " + max_id);
