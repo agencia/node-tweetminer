@@ -12,11 +12,9 @@ twitter.search({"q":"4sq com", "count":"5"},accessTokenKey,accessTokenSecret, fu
 	if (error){
 		console.log(error);
 	} else {
-		//console.log(data);
-		tweets = JSON.parse(data);
-		console.log(tweets);
-		/*for (var tweet in tweets){
+		console.log(data);
+		for (var tweet in data){
 			console.log(tweet);
-		}*/
+		}
 	}
 });
