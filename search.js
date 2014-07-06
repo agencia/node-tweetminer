@@ -19,7 +19,7 @@ var timer = setInterval(function(){
 		if (error){
 			console.log(error);
 		} else {
-			console.log(data);
+			//console.log(data);
 			var i = 0;
 			for (var index in data.statuses){
 				var urls = data.statuses[index]["entities"]["urls"];
