@@ -29,8 +29,9 @@ var q = async.queue(function (shortUrl, callback) {
         if(fsq_keys.length > 1){
         	var lastvars = fsq_keys[1].split('&');
         	var almost_signature = lastvars[0].split('=');
-        	if(almost_signature[1].length > 3) :
+        	if(almost_signature[1].length > 3){
             	fsq_signature = almost_signature[1];
+            }
     	}
         expanded.insert({"longurl" : longUrl, "4sqr_checkinid" : fsq_checkinid, "fsq_signature": fsq_signature});
         callback();
