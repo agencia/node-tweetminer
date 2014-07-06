@@ -14,8 +14,9 @@ var db = monk('localhost:27017/todos_tweets');
 var pool = db.get("url");
 
 
-var max_id = null;
-	twitter.search({"q":"4sq com", "count":"5"},accessTokenKey,accessTokenSecret, function(error, data, response){
+var search_parameters = {"q":"4sq com", "count":"5"};
+
+	twitter.search(search_parameters,accessTokenKey,accessTokenSecret, function(error, data, response){
 		if (error){
 			console.log(error);
 		} else {
@@ -24,10 +25,10 @@ var max_id = null;
 				var urls = data.statuses[index]["entities"]["urls"];
 				console.log(urls[urls.length - 1]["expanded_url"]);
 				pool.insert({"url":urls[urls.length - 1]["expanded_url"]});
-				max_id = data.statuses[index]["id"];
+				//max_id = data.statuses[index]["id"];
 			}
-			//max_id = data.search_metadata.max_id;
-			console.log("max_id: " + max_id);
+			search_parameters["max_id"] = data.search_metadata.max_id;
+			console.log("max_id: " + search_parameters["max_id"]);
 		}
 	});
 
