@@ -14,7 +14,7 @@ var db = monk('localhost:27017/todos_tweets');
 var pool = db.get("url");
 
 
-var search_parameters = {"q":"4sq com", "count":"5"};
+var search_parameters = {"q":"4sq com", "count":"100"};
 var timer = setInterval(function(){
 	twitter.search(search_parameters,accessTokenKey,accessTokenSecret, function(error, data, response){
 		if (error){
