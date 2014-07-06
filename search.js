@@ -48,7 +48,7 @@ var search_parameters = {"q":"4sq com", "count":"100"};
 var timer = setInterval(function(){
 	twitter.search(search_parameters,accessTokenKey,accessTokenSecret, function(error, data, response){
 		if (error){
-			console.log(error);
+			console.log("Error on fetching twetts: " + error);
 				clearInterval(timer);
 		} else {
 			//console.log(data);
@@ -57,7 +57,7 @@ var timer = setInterval(function(){
 				var urls = data.statuses[index]["entities"]["urls"];
 				//console.log(urls[urls.length - 1]["expanded_url"]);
 				//pool.insert({"url":urls[urls.length - 1]["expanded_url"]});
-				q.push(urls[urls.length - 1]["expanded_url"], function (errr) {console.log(errr);});
+				q.push(urls[urls.length - 1]["expanded_url"], function (errr) {console.log("Error on pooling: "+errr);});
 				search_parameters["max_id"] = (search_parameters["max_id"] > data.statuses[index]["id"] || !search_parameters["max_id"]) ? data.statuses[index]["id"] : search_parameters["max_id"];
 				i++;
 			}
