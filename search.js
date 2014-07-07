@@ -62,7 +62,7 @@ var timer = setInterval(function(){
 
 	db.close();
 
-funtion getSignature(longUrl){
+function getSignature(longUrl){
 
 	var fsq_params, fsq_keys,fsq_checkinid, fsq_signature, lastvars, almost_signature;
 	fsq_params	= longUrl.split("/");
