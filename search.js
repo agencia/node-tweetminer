@@ -18,12 +18,25 @@ var pool = db.get("url");
 var expanded = db.get("expanded");
 
 var counter=0;
+var fsq_params, fsq_keys,fsq_checkinid, fsq_signature = null, lastvars, almost_signature;
 var q = async.queue(function (shortUrl, callback) {
     urlExpander.expand(shortUrl, function(err, longUrl){
         counter++;
         //console.log(counter+": "+longUrl);
-        var checkin = getSignature(longUrl);
-        expanded.insert({"longurl" : longUrl, "4sqr_checkinid" : checkin["fsq_checkinid"], "fsq_signature": checkin["fsq_signature"]});
+         fsq_params	= longUrl.split("/");
+         fsq_keys	= fsq_params[fsq_params.length-1].split('?');
+         fsq_checkinid = fsq_keys[0];
+         fsq_signature = null;
+        if(fsq_keys.length > 1){
+        	 lastvars = fsq_keys[1].split('&');
+        	 almost_signature = lastvars[0].split('=');
+        	if(almost_signature[1].length > 3){
+            	fsq_signature = almost_signature[1];
+            }
+    	}
+        expanded.insert({"longurl" : longUrl, "4sqr_checkinid" : fsq_checkinid, "4sqr_signature": fsq_signature});
+        fsq_signature = null;
+        fsq_params = null;
         callback();
     });
 }, 50);
@@ -61,20 +74,3 @@ var timer = setInterval(function(){
 , 5000); //5 seconds
 
 	db.close();
-
-function getSignature(longUrl){
-
-	var fsq_params, fsq_keys,fsq_checkinid, fsq_signature, lastvars, almost_signature;
-	fsq_params	= longUrl.split("/");
-         fsq_keys	= fsq_params[fsq_params.length-1].split('?');
-         fsq_checkinid = fsq_keys[0];
-         fsq_signature = null;
-        if(fsq_keys.length > 1){
-        	 lastvars = fsq_keys[1].split('&');
-        	 almost_signature = lastvars[0].split('=');
-        	if(almost_signature[1].length > 3){
-            	fsq_signature = almost_signature[1];
-            }
-    	}
-    	return {"4sqr_checkinid" : fsq_checkinid, "4sqr_signature": fsq_signature};
-}
