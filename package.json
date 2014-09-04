@@ -1,0 +1,19 @@
+{
+  "name": "nodetwitterminer",
+  "version": "0.0.0",
+  "description": "Node twitter miner",
+  "main": "search.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/agencia/node-tweetminer.git"
+  },
+  "author": "fernando.medrano@upa.edu.mx",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/agencia/node-tweetminer/issues"
+  },
+  "homepage": "https://github.com/agencia/node-tweetminer"
+}
