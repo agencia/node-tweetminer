@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/agencia/node-tweetminer/issues"
   },
-  "homepage": "https://github.com/agencia/node-tweetminer"
+  "homepage": "https://github.com/agencia/node-tweetminer",
+  "dependencies": {
+    "async": "^0.9.0",
+    "expand-url": "^0.1.3",
+    "node-twitter-api": "^1.2.4",
+    "request": "^2.42.0"
+  }
 }
