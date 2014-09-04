@@ -4,6 +4,26 @@
 		"selected_items":
 		[
 			[
+				"long",
+				"longUrl"
+			],
+			[
+				"lon",
+				"longUrl"
+			],
+			[
+				"fsq",
+				"fsq_signature"
+			],
+			[
+				"fs",
+				"fsq_signature"
+			],
+			[
+				"t",
+				"tweets"
+			],
+			[
 				"acc",
 				"accessTokenSecret"
 			],
@@ -31,23 +51,39 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "search.js",
+			"settings":
+			{
+				"buffer_size": 2697,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "tweet_example.json",
+			"settings":
+			{
+				"buffer_size": 7472,
+				"line_ending": "Unix",
+				"name": "{"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 147.0,
+		"height": 107.0,
 		"selected_items":
 		[
 			[
-				"pull",
-				"Git: Pull"
-			],
-			[
 				"push",
-				"Git: Push"
-			],
-			[
-				"git pu",
 				"Git: Push"
 			],
 			[
@@ -55,8 +91,60 @@
 				"Git: Quick Commit"
 			],
 			[
+				"pus",
+				"Git: Push"
+			],
+			[
+				"qu",
+				"Git: Quick Commit"
+			],
+			[
+				"pu",
+				"Git: Push"
+			],
+			[
+				"q",
+				"Git: Quick Commit"
+			],
+			[
 				"git qu",
 				"Git: Quick Commit"
+			],
+			[
+				"puah",
+				"Git: Pull Current Branch"
+			],
+			[
+				"co",
+				"Git: Quick Commit"
+			],
+			[
+				"",
+				"Git: Commit"
+			],
+			[
+				"commi",
+				"Git: Commit"
+			],
+			[
+				"git add",
+				"Git: Add..."
+			],
+			[
+				"PUSH",
+				"Git: Push"
+			],
+			[
+				"comm",
+				"Git: Quick Commit"
+			],
+			[
+				"pull",
+				"Git: Pull"
+			],
+			[
+				"git pu",
+				"Git: Push"
 			],
 			[
 				"quic",
@@ -75,20 +163,12 @@
 				"Git: Quick Commit"
 			],
 			[
-				"qu",
-				"Git: Quick Commit"
-			],
-			[
 				"git qui",
 				"Git: Quick Commit"
 			],
 			[
 				"git co",
 				"Git: Quick Commit"
-			],
-			[
-				"git add",
-				"Git: Add Current File"
 			],
 			[
 				"git push",
@@ -124,10 +204,6 @@
 			],
 			[
 				"pack",
-				"Package Control: Install Package"
-			],
-			[
-				"",
 				"Package Control: Install Package"
 			],
 			[
@@ -191,7 +267,7 @@
 	],
 	"find":
 	{
-		"height": 27.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
@@ -205,6 +281,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"status",
 			"json",
 			"date"
 		],
@@ -224,8 +301,95 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "search.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2697,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2667,
+								2667
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 289.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "tweet_example.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7472,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4611,
+								4617
+							]
+						],
+						"settings":
+						{
+							"auto_name": "{",
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -280,6 +444,10 @@
 		"selected_items":
 		[
 			[
+				"push",
+				"~/Dropbox/UPA/Proyectos/nodetwitterminer/search.js"
+			],
+			[
 				"",
 				"index.js"
 			]
@@ -308,7 +476,7 @@
 	"show_minimap": true,
 	"show_open_files": true,
 	"show_tabs": true,
-	"side_bar_visible": true,
+	"side_bar_visible": false,
 	"side_bar_width": 150.0,
 	"status_bar_visible": true,
 	"template_settings":

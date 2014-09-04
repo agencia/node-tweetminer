@@ -51,7 +51,8 @@ var search_parameters = {"q":"4sq com", "count":"100"};
 var timer = setInterval(function(){
 	twitter.search(search_parameters,accessTokenKey,accessTokenSecret, function(error, data, response){
 		if (error){
-			console.log("Error on fetching twetts: " + error);
+			console.log("Error on fetching tweets: " + error);
+			console.log(error);
 				clearInterval(timer);
 		} else {
 			//console.log(data);
