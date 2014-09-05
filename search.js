@@ -61,7 +61,7 @@ var timer = setInterval(function(){
 				var urls = data.statuses[index]["entities"]["urls"];
 				//pool.insert({"url":urls[urls.length - 1]["expanded_url"]});
 				//console.log(urls[urls.length - 1]["expanded_url"]);
-				q.push(urls[(urls.length > 1 ? urls.length - 1:0)]["expanded_url"], function (err) {
+				q.push(urls[urls.length - 1].expanded_url, function (err) {
 					console.log("Error on pooling: " + err);
 					console.log(urls);
 				});
