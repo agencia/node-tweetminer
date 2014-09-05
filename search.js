@@ -21,28 +21,34 @@ var counter=0;
 var fsq_params, fsq_keys,fsq_checkinid, fsq_signature = null, lastvars, almost_signature;
 var q = async.queue(function (shortUrl, callback) {
     urlExpander.expand(shortUrl, function(err, longUrl){
-        counter++;
-        try{
-        	console.log(counter+": "+longUrl);
-        	fsq_params	= longUrl.split("/");
-     	}catch(ex){
-     		console.log(ex);
-     		console.log(longUrl);
-     		console.log(shortUrl);
-     	}
-         fsq_keys	= fsq_params[fsq_params.length-1].split('?');
-         fsq_checkinid = fsq_keys[0];
-         fsq_signature = null;
-        if(fsq_keys.length > 1){
-        	 lastvars = fsq_keys[1].split('&');
-        	 almost_signature = lastvars[0].split('=');
-        	if(almost_signature[1].length > 3){
-            	fsq_signature = almost_signature[1];
-            }
-    	}
-        expanded.insert({"longurl" : longUrl, "4sqr_checkinid" : fsq_checkinid, "4sqr_signature": fsq_signature});
-        fsq_signature = null;
-        fsq_params = null;
+    	if(typeof longUrl == "undefined"){
+    		q.push(shortUrl,function(err){
+    			console.log("longUrl is undefined, re-entering shortUrl");
+    		});
+    	} else {
+	        counter++;
+	        try{
+	        	console.log(counter+": "+longUrl);
+	        	fsq_params	= longUrl.split("/");
+	     	}catch(ex){
+	     		console.log(ex);
+	     		console.log(longUrl);
+	     		console.log(shortUrl);
+	     	}
+	         fsq_keys	= fsq_params[fsq_params.length-1].split('?');
+	         fsq_checkinid = fsq_keys[0];
+	         fsq_signature = null;
+	        if(fsq_keys.length > 1){
+	        	 lastvars = fsq_keys[1].split('&');
+	        	 almost_signature = lastvars[0].split('=');
+	        	if(almost_signature[1].length > 3){
+	            	fsq_signature = almost_signature[1];
+	            }
+	    	}
+	        expanded.insert({"longurl" : longUrl, "4sqr_checkinid" : fsq_checkinid, "4sqr_signature": fsq_signature});
+	        fsq_signature = null;
+	        fsq_params = null;
+	    }
         callback();
     });
 }, 50);
@@ -82,6 +88,6 @@ var timer = setInterval(function(){
 		}
 	});
 }
-, 5000); //5 seconds
+, 8000); //5 seconds
 
 	db.close();
