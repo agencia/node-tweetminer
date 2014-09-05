@@ -21,7 +21,7 @@ var counter=0;
 var fsq_params, fsq_keys,fsq_checkinid, fsq_signature = null, lastvars, almost_signature;
 var q = async.queue(function (shortUrl, callback) {
     urlExpander.expand(shortUrl, function(err, longUrl){
-    	if(typeof longUrl == "undefined"){
+    	if(typeof longUrl === "undefined"){
     		q.push(shortUrl,function(err){
     			console.log("longUrl is undefined, re-entering shortUrl");
     		});
@@ -61,32 +61,37 @@ q.drain = function() {
 
 var search_parameters = {"q":"4sq com", "count":"100"};
 var timer = setInterval(function(){
-	twitter.search(search_parameters,accessTokenKey,accessTokenSecret, function(error, data, response){
-		if (error){
-			console.log("Error on fetching tweets: " + error);
-			console.log(error);
-				clearInterval(timer);
-		} else {
-			//console.log(data);
-			var i = 0;
-			for (var index in data.statuses){
-				var urls = data.statuses[index]["entities"]["urls"];
-				//pool.insert({"url":urls[urls.length - 1]["expanded_url"]});
-				//console.log(urls[urls.length - 1]["expanded_url"]);
-				q.push(urls[urls.length - 1].expanded_url, function (err) {
-					//this is not for error, this is for callback
-					//console.log("Error on pooling: " + err);
-					//console.log(data.statuses[index]["entities"]);
-				});
-				search_parameters["max_id"] = (search_parameters["max_id"] > data.statuses[index]["id"] || !search_parameters["max_id"]) ? data.statuses[index]["id"] : search_parameters["max_id"];
-				i++;
+	try{
+		twitter.search(search_parameters,accessTokenKey,accessTokenSecret, function(error, data, response){
+			if (error){
+				console.log("Error on fetching tweets: " + error);
+				console.log(error);
+					clearInterval(timer);
+			} else {
+				//console.log(data);
+				var i = 0;
+				for (var index in data.statuses){
+					var urls = data.statuses[index]["entities"]["urls"];
+					//pool.insert({"url":urls[urls.length - 1]["expanded_url"]});
+					//console.log(urls[urls.length - 1]["expanded_url"]);
+					q.push(urls[urls.length - 1].expanded_url, function (err) {
+						//this is not for error, this is for callback
+						//console.log("Error on pooling: " + err);
+						//console.log(data.statuses[index]["entities"]);
+					});
+					search_parameters["max_id"] = (search_parameters["max_id"] > data.statuses[index]["id"] || !search_parameters["max_id"]) ? data.statuses[index]["id"] : search_parameters["max_id"];
+					i++;
+				}
+				if(i < 1){
+					clearInterval(timer);
+					console.log("Finish!!!!");
+				}
 			}
-			if(i < 1){
-				clearInterval(timer);
-				console.log("Finish!!!!");
-			}
-		}
-	});
+		});
+	} catch (ex){
+		console.log("error parsing");
+		console.log(ex);
+	}
 }
 , 8000); //5 seconds
 
