@@ -62,7 +62,7 @@ var timer = setInterval(function(){
 				//pool.insert({"url":urls[urls.length - 1]["expanded_url"]});
 				//console.log(urls[urls.length - 1]["expanded_url"]);
 				q.push(urls[urls.length - 1]["expanded_url"], function (err) {
-				//console.log("Error on pooling: " + err);
+					console.log("Error on pooling: " + err);
 				});
 				search_parameters["max_id"] = (search_parameters["max_id"] > data.statuses[index]["id"] || !search_parameters["max_id"]) ? data.statuses[index]["id"] : search_parameters["max_id"];
 				i++;
