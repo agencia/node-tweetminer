@@ -22,7 +22,7 @@ var fsq_params, fsq_keys,fsq_checkinid, fsq_signature = null, lastvars, almost_s
 var q = async.queue(function (shortUrl, callback) {
     urlExpander.expand(shortUrl, function(err, longUrl){
         counter++;
-        //console.log(counter+": "+longUrl);
+        console.log(counter+": "+longUrl);
          fsq_params	= longUrl.split("/");
          fsq_keys	= fsq_params[fsq_params.length-1].split('?');
          fsq_checkinid = fsq_keys[0];
@@ -60,10 +60,10 @@ var timer = setInterval(function(){
 			for (var index in data.statuses){
 				var urls = data.statuses[index]["entities"]["urls"];
 				//pool.insert({"url":urls[urls.length - 1]["expanded_url"]});
-				console.log(urls[urls.length - 1]["expanded_url"]);
+				//console.log(urls[urls.length - 1]["expanded_url"]);
 				q.push(urls[urls.length - 1].expanded_url, function (err) {
 					console.log("Error on pooling: " + err);
-					console.log(data.statuses[index]["entities"]);
+					//console.log(data.statuses[index]["entities"]);
 				});
 				search_parameters["max_id"] = (search_parameters["max_id"] > data.statuses[index]["id"] || !search_parameters["max_id"]) ? data.statuses[index]["id"] : search_parameters["max_id"];
 				i++;
