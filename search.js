@@ -22,8 +22,14 @@ var fsq_params, fsq_keys,fsq_checkinid, fsq_signature = null, lastvars, almost_s
 var q = async.queue(function (shortUrl, callback) {
     urlExpander.expand(shortUrl, function(err, longUrl){
         counter++;
-        console.log(counter+": "+longUrl);
-         fsq_params	= longUrl.split("/");
+        try{
+        	console.log(counter+": "+longUrl);
+        	fsq_params	= longUrl.split("/");
+     	}catch(ex){
+     		console.log(ex);
+     		console.log(longUrl);
+     		console.log(shortUrl);
+     	}
          fsq_keys	= fsq_params[fsq_params.length-1].split('?');
          fsq_checkinid = fsq_keys[0];
          fsq_signature = null;
