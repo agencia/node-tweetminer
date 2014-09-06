@@ -27,14 +27,9 @@ var q = async.queue(function (shortUrl, callback) {
     		});
     	} else {
 	        counter++;
-	        try{
-	        	console.log(counter+": "+longUrl);
+	        	//console.log(counter+": "+longUrl);
 	        	fsq_params	= longUrl.split("/");
-	     	}catch(ex){
-	     		console.log(ex);
-	     		console.log(longUrl);
-	     		console.log(shortUrl);
-	     	}
+
 	         fsq_keys	= fsq_params[fsq_params.length-1].split('?');
 	         fsq_checkinid = fsq_keys[0];
 	         fsq_signature = null;
