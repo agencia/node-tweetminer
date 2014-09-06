@@ -61,7 +61,7 @@ var timer = setInterval(function(){
 			if (error){
 				console.log("Error on fetching tweets: " + error);
 				console.log(error);
-					clearInterval(timer);
+					//clearInterval(timer);
 			} else {
 				//console.log(data);
 				var i = 0;
@@ -88,6 +88,6 @@ var timer = setInterval(function(){
 		console.log(ex);
 	}
 }
-, 8000); //5 seconds
+, 10000); //15 seconds
 
 	db.close();
