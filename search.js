@@ -60,8 +60,8 @@ var timer = setInterval(function(){
 		twitter.search(search_parameters,accessTokenKey,accessTokenSecret, function(error, data, response){
 			if (error){
 				console.log("Error on fetching tweets: " + error);
-				console.log(error);
-					//clearInterval(timer);
+				console.log(data);
+				clearInterval(timer);
 			} else {
 				//console.log(data);
 				var i = 0;
