@@ -287,13 +287,17 @@ Twitter.prototype.search = function(params, accessToken, accessTokenSecret, call
 	var request =this.oa.get(baseUrl + "search/tweets.json?" + querystring.stringify(params), accessToken, accessTokenSecret);
 	request.on('response', function (response) {
 		//console.log(response);
-		response.setEncoding('utf8');
+		//response.setEncoding('utf8');
 		response.on('data', function (chunk) {
 			data += chunk;
 			//console.log("got: " + chunk);
 		});
 		response.on('end', function () {
-			callback(null, JSON.parse(data), response);
+			try{
+				callback(null, JSON.parse(data), response);
+			}catch(ex){
+				callback(ex,data,response);
+			}
 	  	});
 	});
 	request.on('error', function (error) {
