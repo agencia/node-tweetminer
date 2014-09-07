@@ -296,10 +296,10 @@ Twitter.prototype.search = function(params, accessToken, accessTokenSecret, call
 			callback(null, JSON.parse(data), response);
 	  	});
 	});
-	request.on('response', function (error) {
+	request.on('error', function (error) {
 		callback(error, JSON.parse(data), response);
 	});
-	request.write('data\n');
+	//request.write('data\n');
 	request.end();
 };
 
