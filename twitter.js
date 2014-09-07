@@ -289,7 +289,7 @@ Twitter.prototype.search = function(params, accessToken, accessTokenSecret, call
 		console.log(response);
 		response.setEncoding('utf8');
 		response.on('data', function (chunk) {
-			data += chunk;
+			//data += chunk;
 			console.log("got: " + chunk);
 		});
 		response.on('end', function () {
@@ -299,6 +299,7 @@ Twitter.prototype.search = function(params, accessToken, accessTokenSecret, call
 	request.on('response', function (error) {
 		callback(error, JSON.parse(data), response);
 	});
+	request.write('data\n');
 	request.end();
 };
 
