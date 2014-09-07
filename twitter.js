@@ -286,6 +286,7 @@ Twitter.prototype.search = function(params, accessToken, accessTokenSecret, call
 	var data = "";
 	var request =this.oa.get(baseUrl + "search/tweets.json?" + querystring.stringify(params), accessToken, accessTokenSecret);
 	request.on('response', function (response) {
+		console.log(response.statusCode);
 		response.setEncoding('utf8');
 		response.on('data', function (chunk) {
 			data += chunk;
