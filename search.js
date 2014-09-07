@@ -54,7 +54,7 @@ q.drain = function() {
 }
 
 
-var search_parameters = {"q":"4sq com", "count":"100"};
+var search_parameters = {"q":"4sq com", "count":"50"};
 var timer = setInterval(function(){
 	try{
 		twitter.search(search_parameters,accessTokenKey,accessTokenSecret, function(error, data, response){
@@ -88,6 +88,6 @@ var timer = setInterval(function(){
 		console.log(ex);
 	}
 }
-, 10000); //15 seconds
+, 5000); //5 seconds
 
 	db.close();
