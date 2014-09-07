@@ -72,7 +72,7 @@ var timer = setInterval(function(){
 					q.push(urls[urls.length - 1].expanded_url, function (err) {
 						//this is not for error, this is for callback
 						//console.log("Error on pooling: " + err);
-						console.log(urls[urls.length - 1].expanded_url);
+						//console.log(urls[urls.length - 1].expanded_url);
 					});
 					search_parameters["max_id"] = (search_parameters["max_id"] > data.statuses[index]["id"] || !search_parameters["max_id"]) ? data.statuses[index]["id"] : search_parameters["max_id"];
 					i++;
