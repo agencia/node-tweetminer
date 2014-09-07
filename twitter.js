@@ -283,12 +283,13 @@ Twitter.prototype.updateWithMedia = function(params, accessToken, accessTokenSec
 
 // Search
 Twitter.prototype.search = function(params, accessToken, accessTokenSecret, callback) {
-	var data;
+	var data = "";
 	var request =this.oa.get(baseUrl + "search/tweets.json?" + querystring.stringify(params), accessToken, accessTokenSecret);
 	request.on('response', function (response) {
 		response.setEncoding('utf8');
 		response.on('data', function (chunk) {
 			data += chunk;
+			console.log(chunk);
 		});
 		response.on('end', function () {
 			callback(null, JSON.parse(data), response);
